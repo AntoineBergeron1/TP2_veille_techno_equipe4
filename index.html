@@ -42,8 +42,8 @@
       en utilisant des technologies actuelles et stables.
     </p>
     <p style="margin-top:0.8rem;">
-      Le livrable est un <strong>site web statique</strong> (GitHub Pages) qui va servir de rapport d'intention,
-      accompagné d'une présentation orale au client. Ce rapport prouve notre compréhension globale du besoin,
+      Le livrable est un <strong>site web statique</strong> basé sur GitHub Pages et qui va servir de rapport d'intention. Ce dernier est par la suite
+      accompagné d'une présentation orale pour le client pour une meilleure compréhension de nos intentions sur notre projet. Ce rapport prouve notre compréhension globale du besoin,
       le potentiel de réalisation technique de nos idées et la justification de nos choix technologiques.
     </p>
   </div>
@@ -52,9 +52,9 @@
   <div class="card" id="objectifs">
     <h3>Objectifs et visées du projet</h3>
     <ul>
-      <li>Proposer deux idéations d'installations numériques réalistes et réalisables.</li>
+      <li>Proposer deux phases de réflexion d'installations numériques réalistes.</li>
       <li>Démontrer une compréhension claire du besoin du client et des critères du projet.</li>
-      <li>Justifier les choix technologiques (matériels et logiciels) de manière rigoureuse.</li>
+      <li>Justifier nos choix technologiques (matériels et logiciels) de manière organisée.</li>
       <li>Présenter des schémas matériels et logiciels détaillés pour chaque proposition.</li>
       <li>Livrer un rapport d'intention professionnel sous forme de site web statique.</li>
       <li>Effectuer une présentation claire et structurée au client.</li>
@@ -65,7 +65,7 @@
   <div class="card" id="contraintes">
     <h3>Contraintes du projet (ce que le client ne veut pas)</h3>
     <ul>
-      <li>Pas de solution trop complexe ou irréaliste à réaliser dans le temps imparti (4 semaines).</li>
+      <li>Pas de solution trop complexe ou irréaliste à réaliser dans un temps de 4 semaines.</li>
       <li>Pas de dépendance à des services cloud payants ou des abonnements externes.</li>
       <li>Pas de technologies propriétaires fermées limitant la maintenabilité.</li>
       <li>Pas de système nécessitant une intervention humaine constante pour fonctionner.</li>
@@ -79,19 +79,19 @@
     <div class="grid-2" style="margin-top:1rem;">
       <div>
         <h3>Longévité</h3>
-        <p>Les technologies choisies doivent avoir une communauté active et un support à long terme. Le Raspberry Pi et Python répondent à ce critère grâce à leur large adoption mondiale.</p>
+        <p>Les technologies choisies doivent avoir une communauté active de programmeurs et un support à long terme. Le Raspberry Pi et le langage de code Python répondent à ce critère grâce à leur usage généralisé</p>
       </div>
       <div>
         <h3>Stabilité</h3>
-        <p>Le système doit fonctionner de manière autonome sans plantages. Les bibliothèques utilisées (GPIO, OpenCV) sont matures et testées en production sur Raspberry Pi.</p>
+        <p>Le système doit fonctionner de manière autonome qu'il se plante. Les bibliothèques utilisées (GPIO, OpenCV) sont testées en production sur Raspberry Pi.</p>
       </div>
       <div>
         <h3>Efficacité</h3>
-        <p>Les ressources matérielles sont limitées (Raspberry Pi). Le code doit être optimisé pour une faible consommation mémoire et CPU, avec des lectures de capteurs à intervalles raisonnables.</p>
+        <p>Le Raspberry Pi a des ressources limitées. Le code doit donc être léger et bien optimisé pour ne pas trop utiliser la mémoire et le processeur. Les capteurs doivent être lus à de bonnes intervalles.</p>
       </div>
       <div>
         <h3>Maintenabilité</h3>
-        <p>Le code doit être clair, documenté et modulaire. L'utilisation de Python et de fichiers CSV/JSON standards facilite les modifications futures par d'autres développeurs.</p>
+        <p>Le code doit être simple, clair et bien organisé. Utiliser Python et des fichiers standards comme CSV ou JSON permet de faciliter les modifications plus tard.</p>
       </div>
     </div>
   </div>
@@ -111,28 +111,27 @@
   </div>
 
   <!-- Description -->
-  <div class="card">
-    <h3>Description détaillée</h3>
-    <p>
-      PlantGuardian est un système connecté qui surveille une plante à l'aide d'une caméra et de capteurs.
-      Ce système innovant analyse l'état de la plante en continu, enregistre sa croissance sous forme de time-lapse
-      et arrose automatiquement lorsque la terre devient trop sèche. Un tableau de bord web permet de
-      consulter l'historique des données et l'état de santé actuel de la plante.
-    </p>
-  </div>
-
-  <!-- Fonctionnement -->
-  <div class="card">
-    <h3>Fonctionnement</h3>
-    <ol>
-      <li><strong>Collecte de données :</strong> Le capteur d'humidité du sol mesure le taux d'humidité à intervalles réguliers (ex. toutes les 15 minutes). Le capteur de luminosité enregistre la quantité de lumière ambiante.</li>
-      <li><strong>Capture d'images :</strong> La caméra prend des photos à intervalles définis pour constituer un time-lapse de la croissance de la plante.</li>
-      <li><strong>Analyse visuelle :</strong> OpenCV analyse les images pour détecter des changements de couleur (jaunissement des feuilles, etc.) et estimer l'état de la plante.</li>
-      <li><strong>Arrosage automatique :</strong> Lorsque le capteur d'humidité indique un sol trop sec, le Raspberry Pi active le relais qui déclenche la pompe à eau pour arroser la plante.</li>
-      <li><strong>Enregistrement :</strong> Toutes les mesures sont sauvegardées en fichiers CSV/JSON pour consultation ultérieure.</li>
-      <li><strong>Affichage :</strong> Une page web locale (HTML/CSS) affiche les graphiques de données, les photos récentes et le bulletin de santé.</li>
-    </ol>
-  </div>
+    <div class="card">
+      <h3>Description détaillée</h3>
+      <p>
+        PlantGuardian est un système connecté qui surveille une plante avec des capteurs et une caméra.
+        Il analyse son état, enregistre sa croissance en time-lapse et arrose automatiquement si le sol est trop sec.
+        Un tableau de bord web permet de voir les données et l’état de la plante.
+      </p>
+    </div>
+    
+    <!-- Fonctionnement -->
+    <div class="card">
+      <h3>Fonctionnement</h3>
+      <ol>
+        <li><strong>Données :</strong> Les capteurs mesurent l’humidité du sol et la lumière à intervalles réguliers.</li>
+        <li><strong>Images :</strong> La caméra prend des photos pour créer un time-lapse de la plante.</li>
+        <li><strong>Analyse :</strong> OpenCV analyse les images pour détecter des changements (ex. feuilles jaunes).</li>
+        <li><strong>Arrosage :</strong> Si le sol est trop sec, le système active une pompe pour arroser.</li>
+        <li><strong>Sauvegarde :</strong> Les données sont enregistrées en CSV ou JSON.</li>
+        <li><strong>Affichage :</strong> Une page web montre les données, les photos et l’état de la plante.</li>
+      </ol>
+    </div>
 
   <!-- Réponse aux défis -->
   <div class="card">
@@ -253,33 +252,33 @@
       <thead>
         <tr>
           <th>Technologie</th>
-          <th>Justification</th>
+          <th>Pourquoi</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Raspberry Pi</td>
-          <td>Microcontrôleur abordable, polyvalent, avec une immense communauté. Elle supporte Python, GPIO et une caméra native. Elle est idéale pour les projets éducatifs.</td>
+          <td>Petit, abordable et polyvalent. Permet d’utiliser Python, les GPIO et une caméra facilement.</td>
         </tr>
         <tr>
           <td>Python</td>
-          <td>Langage très accessible partout, vaste écosystème de bibliothèques pour l'IoT (GPIO, OpenCV). Python est excellent pour le prototypage rapide.</td>
+          <td>Langage simple et populaire, parfait pour les projets connectés sur internet et le prototypage rapide.</td>
         </tr>
         <tr>
           <td>OpenCV</td>
-          <td>Bibliothèque de vision par ordinateur mature et open source. Permet l'analyse d'images sans dépendance cloud.</td>
+          <td>Permet de traiter et analyser des images facilement sans utiliser le cloud.</td>
         </tr>
         <tr>
           <td>ffmpeg</td>
-          <td>Outil standard pour la manipulation vidéo. Permet de générer des time-lapse à partir d'images de manière automatisée.</td>
+          <td>Permet de créer des vidéos ou des time-lapse à partir d’images automatiquement.</td>
         </tr>
         <tr>
           <td>CSV / JSON</td>
-          <td>Formats de stockage simples, lisibles et universels. Aucune base de données lourde requise.</td>
+          <td>Formats simples pour enregistrer et lire les données.</td>
         </tr>
         <tr>
           <td>HTML / CSS</td>
-          <td>Technologies web standards pour créer un tableau de bord consultable depuis n'importe quel navigateur sur le réseau local.</td>
+          <td>Permet d’afficher les résultats dans un navigateur facilement.</td>
         </tr>
       </tbody>
     </table>
@@ -298,24 +297,23 @@
   <div class="card">
     <h3>Description détaillée</h3>
     <p>
-      WaterGuardian est un système de surveillance automatique de la qualité de l'eau pour un aquarium,
-      des plantes aquatiques ou de l'eau potable. Le Raspberry Pi est relié à plusieurs sondes immergées
-      qui mesurent le pH, la température et la turbidité en continu. Lorsqu'un paramètre devient anormal,
-      le système affiche un avertissement sur une interface web et propose des recommandations.
-      L'historique complet est enregistré pour suivre l'évolution dans le temps.
+      WaterGuardian est un système qui surveille la qualité de l’eau (aquarium ou eau potable).
+      Un Raspberry Pi est connecté à des capteurs qui mesurent le pH, la température et la clarté de l’eau.
+      Si une valeur devient anormale, une alerte s’affiche sur une page web avec des recommandations.
+      Toutes les données sont enregistrées pour suivre l’évolution dans le temps.
     </p>
   </div>
-
+  
   <!-- Fonctionnement -->
   <div class="card">
     <h3>Fonctionnement</h3>
     <ol>
-      <li><strong>Mesures continues :</strong> Les capteurs (pH, température, turbidité) prennent des mesures à intervalles réguliers (ex. toutes les 10 minutes).</li>
-      <li><strong>Analyse des seuils :</strong> Le script Python compare chaque mesure aux seuils définis (ex. pH entre 6.5 et 8.5, température entre 18°C et 28°C).</li>
-      <li><strong>Détection d'anomalies :</strong> Si une valeur sort des seuils acceptables, le système génère une alerte visuelle sur le tableau de bord.</li>
-      <li><strong>Recommandations :</strong> En fonction du type d'anomalie, le système propose des actions correctives (ex. changer l'eau, nettoyer le filtre, ajuster le pH).</li>
-      <li><strong>Enregistrement :</strong> Toutes les mesures sont sauvegardées en CSV/JSON pour un suivi historique.</li>
-      <li><strong>Visualisation :</strong> Des graphiques générés avec Matplotlib montrent les tendances et variations sur le tableau de bord web.</li>
+      <li><strong>Mesures :</strong> Les capteurs prennent des données à intervalles réguliers (ex. toutes les 10 minutes).</li>
+      <li><strong>Analyse :</strong> Le programme vérifie si les valeurs respectent les seuils définis.</li>
+      <li><strong>Alerte :</strong> Si une valeur est anormale, une alerte apparaît sur le tableau de bord.</li>
+      <li><strong>Recommandations :</strong> Le système propose des actions (ex. changer l’eau, ajuster le pH).</li>
+      <li><strong>Sauvegarde :</strong> Les données sont enregistrées en CSV ou JSON.</li>
+      <li><strong>Graphiques :</strong> Des graphiques montrent l’évolution des données.</li>
     </ol>
   </div>
 
@@ -440,37 +438,37 @@
       <thead>
         <tr>
           <th>Technologie</th>
-          <th>Justification</th>
+          <th>Pourquoi</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Raspberry Pi</td>
-          <td>Plateforme polyvalente capable de gérer plusieurs capteurs simultanément. Supporte Python et GPIO nativement.</td>
+          <td>Peut gérer plusieurs capteurs en même temps et fonctionne bien avec Python.</td>
         </tr>
         <tr>
           <td>Python</td>
-          <td>Langage idéal pour le traitement de données de capteurs. Grande variété de bibliothèques scientifiques disponibles.</td>
+          <td>Facile à utiliser et parfait pour traiter les données des capteurs.</td>
         </tr>
         <tr>
           <td>Sonde pH</td>
-          <td>Capteur spécialisé fiable pour mesurer l'acidité de l'eau. Compatible avec les modules ADC du Raspberry Pi.</td>
+          <td>Permet de mesurer l’acidité de l’eau de façon fiable.</td>
         </tr>
         <tr>
           <td>DS18B20</td>
-          <td>Capteur de température étanche, précis et conçu pour une immersion prolongée. Protocole 1-Wire simple à interfacer.</td>
+          <td>Capteur de température précis et étanche, idéal pour l’eau.</td>
         </tr>
         <tr>
           <td>Matplotlib</td>
-          <td>Bibliothèque de visualisation standard en Python. Permet de générer des graphiques professionnels sans service externe.</td>
+          <td>Permet de créer des graphiques facilement en Python.</td>
         </tr>
         <tr>
           <td>CSV / JSON</td>
-          <td>Stockage léger, lisible par humain et par machine. Idéal pour un Raspberry Pi avec ressources limitées.</td>
+          <td>Formats simples pour enregistrer les données.</td>
         </tr>
         <tr>
           <td>HTML / CSS</td>
-          <td>Interface universelle accessible depuis tout navigateur. Pas besoin d'installer d'application supplémentaire.</td>
+          <td>Permet de voir les résultats dans un navigateur sans installer d’application.</td>
         </tr>
       </tbody>
     </table>
@@ -481,7 +479,7 @@
 <footer>
   <p>TP2 – Veille technologique | Équipe 4 | 2025</p>
   <p style="margin-top:0.5rem;">
-    <a href="https://github.com/AntoineBergeron1/TP2_veille_techno_equipe4" target="_blank">Voir le dépôt GitHub</a>
+    <a href="https://github.com/AntoineBergeron1/TP2_veille_techno_equipe4" target="_blank">Voir notre dépôt GitHub</a>
   </p>
 </footer>
 
