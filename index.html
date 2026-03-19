@@ -79,15 +79,15 @@
     <div class="grid-2" style="margin-top:1rem;">
       <div>
         <h3>Longévité</h3>
-        <p>Les technologies choisies doivent avoir une communauté active de programmeurs et un support à long terme. Le Raspberry Pi et le langage de code Python répondent à ce critère grâce à leur usage généralisé</p>
+        <p>Les technologies choisies doivent avoir une communauté active de programmeurs et un support à long terme. Le Raspberry Pi et le langage Python répondent à ce critère grâce à leur usage généralisé</p>
       </div>
       <div>
         <h3>Stabilité</h3>
-        <p>Le système doit fonctionner de manière autonome qu'il se plante. Les bibliothèques utilisées (GPIO, OpenCV) sont testées en production sur Raspberry Pi.</p>
+        <p>Le système doit fonctionner de manière autonome sans qu'il se plante. Les bibliothèques utilisées (GPIO, OpenCV) sont testées en production sur Raspberry Pi.</p>
       </div>
       <div>
         <h3>Efficacité</h3>
-        <p>Le Raspberry Pi a des ressources limitées. Le code doit donc être léger et bien optimisé pour ne pas trop utiliser la mémoire et le processeur. Les capteurs doivent être lus à de bonnes intervalles.</p>
+        <p>Le Raspberry Pi a des ressources limitées. Le code doit donc être léger et bien optimisé pour ne pas trop utiliser la mémoire et le processeur. Les capteurs doivent être lus à de bons intervalles.</p>
       </div>
       <div>
         <h3>Maintenabilité</h3>
@@ -176,7 +176,7 @@
     <div class="flow">
       <span class="flow-step">Démarrage automatique</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-step">Lecture des capteurs aux quarts d'heures</span>
+      <span class="flow-step">Lecture des capteurs toutes les 15 minutes</span>
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-step">Capture photo</span>
       <span class="flow-arrow">&rarr;</span>
@@ -201,6 +201,7 @@
       <span class="tag">Relais électronique</span>
       <span class="tag">Capteur d'humidité du sol</span>
       <span class="tag">Capteur de luminosité</span>
+      <span class="tag">Convertisseur ADC (MCP3008)</span>
       <span class="tag">Carte microSD</span>
       <span class="tag">Alimentation électrique</span>
     </div>
@@ -208,10 +209,12 @@
       <p><strong>Schéma matériel</strong></p>
       <p style="margin-top:0.5rem;">
         [Alimentation] &rarr; [Raspberry Pi] &rarr; [GPIO]<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
-        [Caméra]&nbsp;&nbsp;[Capteur humidité]&nbsp;&nbsp;[Capteur luminosité]<br>
+        &darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
+        [Caméra]&nbsp;&nbsp;[ADC MCP3008]&nbsp;&nbsp;[Relais]&nbsp;&nbsp;[Écran/Web]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
+        [Capteur humidité]&nbsp;&nbsp;[Capteur luminosité]&nbsp;&nbsp;[Pompe à eau]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Relais] &rarr; [Pompe à eau] &rarr; [Plante]
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Plante]
       </p>
     </div>
   </div>
@@ -222,10 +225,11 @@
     <div class="tag-list">
       <span class="tag">Raspberry Pi OS</span>
       <span class="tag">Python</span>
-      <span class="tag">GPIO</span>
+      <span class="tag">gpiozero</span>
       <span class="tag">OpenCV</span>
       <span class="tag">ffmpeg</span>
       <span class="tag">CSV / JSON</span>
+      <span class="tag">Flask (serveur web local)</span>
       <span class="tag">GitHub Pages</span>
       <span class="tag">HTML / CSS</span>
     </div>
@@ -383,6 +387,7 @@
       <span class="tag blue">Sonde de pH</span>
       <span class="tag blue">Capteur température DS18B20</span>
       <span class="tag blue">Capteur de turbidité</span>
+      <span class="tag blue">Convertisseur ADC (ADS1115)</span>
       <span class="tag blue">Écran / accès web</span>
       <span class="tag blue">Carte microSD</span>
       <span class="tag blue">Alimentation électrique</span>
@@ -392,11 +397,11 @@
       <p style="margin-top:0.5rem;">
         [Alimentation] &rarr; [Raspberry Pi] &rarr; [GPIO]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[Sonde pH]&nbsp;&nbsp;[DS18B20 temp.]&nbsp;&nbsp;[Capteur turbidité]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[ADC ADS1115]&nbsp;&nbsp;[DS18B20 (1-Wire)]&nbsp;&nbsp;[Écran/Web]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
+        [Sonde pH]&nbsp;&nbsp;[Capteur turbidité]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[Écran / Navigateur web]<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Eau : aquarium / plante / potable]
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Eau : aquarium / potable]
       </p>
     </div>
   </div>
@@ -407,9 +412,10 @@
     <div class="tag-list">
       <span class="tag blue">Raspberry Pi OS</span>
       <span class="tag blue">Python</span>
-      <span class="tag blue">GPIO</span>
+      <span class="tag blue">gpiozero</span>
       <span class="tag blue">Matplotlib</span>
       <span class="tag blue">CSV / JSON</span>
+      <span class="tag blue">Flask (serveur web local)</span>
       <span class="tag blue">GitHub Pages</span>
       <span class="tag blue">HTML / CSS</span>
     </div>
@@ -477,7 +483,7 @@
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
-  <p>TP2 – Veille technologique | Équipe 4 | 2025</p>
+  <p>TP2 – Veille technologique | Équipe 4 | 2026</p>
   <p style="margin-top:0.5rem;">
     <a href="https://github.com/AntoineBergeron1/TP2_veille_techno_equipe4" target="_blank">Voir notre dépôt GitHub</a>
   </p>
